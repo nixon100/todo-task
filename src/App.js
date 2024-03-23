@@ -79,21 +79,18 @@ function len(){
 
   const FILTER_NAMES = Object.keys(FILTER_MAP);
 
-  const filterList = FILTER_NAMES.map((name) => (
-    <FilterButton
-      key={name}
-      name={name}
-      isPressed={name === filter}
-      setFilter={setFilter}
-    />
-  ));
+ 
+   
+ 
   
 
   return (
     <div className="todoapp stack-large">
     <h1>TodoMatic</h1>
     <Form addTask={addTask} />
-    <div className="filters btn-group stack-exception">{filterList}</div>
+    <div className="filters btn-group stack-exception">
+    <FilterButton setFilter={setFilter}/>
+      </div>
     <h2 id="list-heading" tabIndex="-1" ref={listHeadingRef}>
         {headingText}
       </h2>
