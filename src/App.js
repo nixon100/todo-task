@@ -3,8 +3,8 @@ import Form from './components/Form';
 import { useEffect, useState,useRef } from 'react';
 import dataini from './components/initialdata.json'
 import Todo from './components/Todo';
-import FilterButton from './components/FilterButton'
-
+import FilterButton from './components/FilterButton';
+import Card from './components/card';
 const FILTER_MAP = {
   All: () => true,
   Active: (task) => !task.completed,
@@ -79,7 +79,12 @@ function len(){
 
   const FILTER_NAMES = Object.keys(FILTER_MAP);
 
- 
+  const filterList =  (
+    <FilterButton
+   
+      setFilter={setFilter}
+    />
+  );
    
  
   
@@ -88,9 +93,8 @@ function len(){
     <div className="todoapp stack-large">
     <h1>TodoMatic</h1>
     <Form addTask={addTask} />
-    <div className="filters btn-group stack-exception">
-    <FilterButton setFilter={setFilter}/>
-      </div>
+    <div className="filters btn-group stack-exception">{filterList}</div>
+
     <h2 id="list-heading" tabIndex="-1" ref={listHeadingRef}>
         {headingText}
       </h2>
@@ -100,6 +104,7 @@ function len(){
         role="list"
       >
         {taskList}
+       
       </ul>
   </div>
 
