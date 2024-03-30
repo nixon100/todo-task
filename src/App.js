@@ -44,16 +44,26 @@ function len(){
     const remainingTasks = tasks.filter((task) => id !== task.id);
     setTasks(remainingTasks);
   }
-  function toggleTaskCompleted(id) {
+  function toggleTaskCompleted(id,e) {
     const updatedTasks = tasks.map((task) => {
       // if this task has the same ID as the edited task
       if (id === task.id) {
         // use object spread to make a new obkect
         // whose `completed` prop has been inverted
-        return { ...task, completed: !task.completed };
+        if (e==="completed"){
+          const a = true
+          return { ...task, completed: a };
+        }else {
+          const b = false
+          return { ...task, completed: b };
+        }
+        
       }
       return task;
     });
+    console.log("updatedTasks",updatedTasks)
+    console.log("tasks",tasks)
+
     setTasks(updatedTasks);
   }
 
@@ -62,7 +72,7 @@ function len(){
     <Todo
       id={task.id}
       name={task.name}
-      completed={task.completed}
+      completed={task.completed===true ? "completed" : "not completed"}
       key={task.id}
       toggleTaskCompleted={toggleTaskCompleted}
       deleteTask={deleteTask}
@@ -91,7 +101,7 @@ function len(){
 
   return (
     <div className="todoapp stack-large">
-    <h1>TodoMatic</h1>
+    <h1>Todo App</h1>
     <Form addTask={addTask} />
     <div className="filters btn-group stack-exception">{filterList}</div>
 

@@ -19,7 +19,22 @@ const Form = (props) => {
     <form onSubmit={handleSubmit}>
     <h2 className="label-wrapper">
       <label htmlFor="new-todo-input" className="label__lg">
-        What needs to be done?
+        Name :
+      </label>
+    </h2>
+
+    <input
+      type="text"
+      id="new-todo-input"
+      className="input input__lg"
+      name="text"
+      autoComplete="off"
+      value={name}
+      onChange={handleChange}
+    />
+    <h2 className="label-wrapper">
+      <label htmlFor="new-todo-input" className="label__lg">
+        Description :
       </label>
     </h2>
 

@@ -24,6 +24,47 @@ const editingTemplate = (
           onChange={handleChange}
           ref={editFieldRef}
         />
+        <label className="todo-label" htmlFor={props.id}>
+          New name for {props.name}
+        </label>
+        <input
+          id={props.id}
+          className="todo-text"
+          type="text"
+          value={newName}
+          onChange={handleChange}
+          ref={editFieldRef}
+        />
+      </div>
+      <div className="btn-group">
+        <button
+          type="button"
+          className="btn todo-cancel"
+          onClick={() => setEditing(false)}>
+          Cancel
+          <span className="visually-hidden">renaming {props.name}</span>
+        </button>
+        <button type="submit" className="btn btn__primary todo-edit">
+          Save
+          <span className="visually-hidden">new name for {props.name}</span>
+        </button>
+      </div>
+    </form>
+  );
+  const editingTemplateD = (
+    <form className="stack-small" onSubmit={handleSubmit}>
+      <div className="form-group">
+        <label className="todo-label" htmlFor={props.id}>
+          New name for {props.name}
+        </label>
+        <input
+          id={props.id}
+          className="todo-text"
+          type="text"
+          value={newName}
+          onChange={handleChange}
+          ref={editFieldRef}
+        />
       </div>
       <div className="btn-group">
         <button
@@ -44,9 +85,9 @@ const editingTemplate = (
     <div className="card">
     <div className="card-title">{props.name}</div>
     <div className="card-subtitle">this is the description for my {props.name}</div>
-    <select id="myD"   >
-            <option value="All" id="myD1">All</option>
-            <option value="Active" id="myD2" >Active</option>
+    <select id="myD" value={props.completed}  onChange={(e) => props.toggleTaskCompleted(props.id,e.target.value)} >
+            <option value="completed" id="myD1" >Completed</option>
+            <option value="not completed" id="myD2">Not Completed</option>
   </select>
     <hr className="card-divider"/>
     <div className="card-footer">
