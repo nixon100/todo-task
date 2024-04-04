@@ -3,16 +3,21 @@ import { useState } from 'react'
 
 const Form = (props) => {
  const [name, setName] = useState('');
+ const [desc, setDesc] = useState('');
 
  function handleSubmit(event) {
     event.preventDefault();
-    props.addTask(name);
+    props.addTask(name,desc);
     setName("");
+    setDesc("");
   }
 
   
   function handleChange(event) {
     setName(event.target.value);
+  }
+  function handleChangex(event) {
+    setDesc(event.target.value);
   }
   
   return (
@@ -44,8 +49,8 @@ const Form = (props) => {
       className="input input__lg"
       name="text"
       autoComplete="off"
-      value={name}
-      onChange={handleChange}
+      value={desc}
+      onChange={handleChangex}
     />
     <button type="submit" className="btn btn__primary btn__lg">
       Add

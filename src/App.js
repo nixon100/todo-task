@@ -22,17 +22,17 @@ function App() {
 function len(){
   return tasks.length
 }
-  function addTask(name) {
-    const newTask = { id: "todo-" +len(), name: name, completed: false };
+  function addTask(name,desc) {
+    const newTask = { id: "todo-" +len(), name: name, description : desc, completed: false };
     setTasks([...tasks, newTask]);
   }
 
-  function editTask(id, newName) {
+  function editTask(id, newName,newDesc) {
     const editedTaskList = tasks.map((task) => {
       // if this task has the same ID as the edited task
       if (id === task.id) {
         // Copy the task and update its name
-        return { ...task, name: newName };
+        return { ...task, name: newName ,description:newDesc};
       }
       // Return the original task if it's not the edited task
       return task;
@@ -66,7 +66,7 @@ function len(){
 
     setTasks(updatedTasks);
   }
-
+  // const taskList = tasks?.filter(FILTER_MAP[filter])
   const taskList = tasks?.filter(FILTER_MAP[filter])
   .map((task) => (
     <Todo
@@ -77,6 +77,7 @@ function len(){
       toggleTaskCompleted={toggleTaskCompleted}
       deleteTask={deleteTask}
       editTask={editTask}
+      description={task.description}
     />
   ));
 

@@ -1,5 +1,5 @@
 [
-      { "id": "todo-0", "name": "Eat", "completed": true },
-      { "id": "todo-1", "name": "Sleep", "completed": false },
-      { "id": "todo-2", "name": "Repeat", "completed": false }
+      { "id": "todo-0", "name": "Eat", "description":"this is the description for my demo task","completed": true },
+      { "id": "todo-1", "name": "Sleep", "description":"this is the description for my demo task", "completed": false },
+      { "id": "todo-2", "name": "Repeat","description":"this is the description for my demo task", "completed": false }
 ]

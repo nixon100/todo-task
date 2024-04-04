@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 const Todo = (props) => {
     const [isEditing, setEditing] = useState(false);
 const [newName, setNewName] = useState("");
+const [newDesc, setNewDesc] = useState("");
 
 const editFieldRef = useRef(null);
 const editButtonRef = useRef(null);
@@ -25,14 +26,14 @@ const editingTemplate = (
           ref={editFieldRef}
         />
         <label className="todo-label" htmlFor={props.id}>
-          New name for {props.name}
+          New description for {props.name}
         </label>
         <input
           id={props.id}
           className="todo-text"
           type="text"
-          value={newName}
-          onChange={handleChange}
+          value={newDesc}
+          onChange={handleChangex}
           ref={editFieldRef}
         />
       </div>
@@ -62,7 +63,7 @@ const editingTemplate = (
           className="todo-text"
           type="text"
           value={newName}
-          onChange={handleChange}
+          onChange={handleChangex}
           ref={editFieldRef}
         />
       </div>
@@ -84,7 +85,7 @@ const editingTemplate = (
   const viewTemplate = (
     <div className="card">
     <div className="card-title">{props.name}</div>
-    <div className="card-subtitle">this is the description for my {props.name}</div>
+    <div className="card-subtitle">{props.description}</div>
     <select id="myD" value={props.completed}  onChange={(e) => props.toggleTaskCompleted(props.id,e.target.value)} >
             <option value="completed" id="myD1" >Completed</option>
             <option value="not completed" id="myD2">Not Completed</option>
@@ -131,10 +132,14 @@ const editingTemplate = (
   function handleChange(event) {
     setNewName(event.target.value);
   }
+  function handleChangex(event) {
+    setNewDesc(event.target.value);
+  }
   function handleSubmit(event) {
     event.preventDefault();
-    props.editTask(props.id, newName);
+    props.editTask(props.id, newName,newDesc);
     setNewName("");
+    setNewDesc("");
     setEditing(false);
   }
   
